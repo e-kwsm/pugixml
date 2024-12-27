@@ -12699,7 +12699,7 @@ namespace pugi
 		assert(_result.error);
 	}
 
-	PUGI_IMPL_FN const char* xpath_exception::what() const PUGIXML_NOEXCEPT
+	PUGI_IMPL_FN const char* xpath_exception::what() const noexcept
 	{
 		return _result.error;
 	}
@@ -12805,7 +12805,7 @@ namespace pugi
 	}
 
 #ifdef PUGIXML_HAS_MOVE
-	PUGI_IMPL_FN void xpath_node_set::_move(xpath_node_set& rhs) PUGIXML_NOEXCEPT
+	PUGI_IMPL_FN void xpath_node_set::_move(xpath_node_set& rhs) noexcept
 	{
 		_type = rhs._type;
 		_storage[0] = rhs._storage[0];
@@ -12848,12 +12848,12 @@ namespace pugi
 	}
 
 #ifdef PUGIXML_HAS_MOVE
-	PUGI_IMPL_FN xpath_node_set::xpath_node_set(xpath_node_set&& rhs) PUGIXML_NOEXCEPT: _type(type_unsorted), _begin(_storage), _end(_storage)
+	PUGI_IMPL_FN xpath_node_set::xpath_node_set(xpath_node_set&& rhs) noexcept: _type(type_unsorted), _begin(_storage), _end(_storage)
 	{
 		_move(rhs);
 	}
 
-	PUGI_IMPL_FN xpath_node_set& xpath_node_set::operator=(xpath_node_set&& rhs) PUGIXML_NOEXCEPT
+	PUGI_IMPL_FN xpath_node_set& xpath_node_set::operator=(xpath_node_set&& rhs) noexcept
 	{
 		if (this == &rhs) return *this;
 
@@ -13048,7 +13048,7 @@ namespace pugi
 	}
 
 #ifdef PUGIXML_HAS_MOVE
-	PUGI_IMPL_FN xpath_variable_set::xpath_variable_set(xpath_variable_set&& rhs) PUGIXML_NOEXCEPT
+	PUGI_IMPL_FN xpath_variable_set::xpath_variable_set(xpath_variable_set&& rhs) noexcept
 	{
 		for (size_t i = 0; i < sizeof(_data) / sizeof(_data[0]); ++i)
 		{
@@ -13057,7 +13057,7 @@ namespace pugi
 		}
 	}
 
-	PUGI_IMPL_FN xpath_variable_set& xpath_variable_set::operator=(xpath_variable_set&& rhs) PUGIXML_NOEXCEPT
+	PUGI_IMPL_FN xpath_variable_set& xpath_variable_set::operator=(xpath_variable_set&& rhs) noexcept
 	{
 		for (size_t i = 0; i < sizeof(_data) / sizeof(_data[0]); ++i)
 		{
@@ -13251,7 +13251,7 @@ namespace pugi
 	}
 
 #ifdef PUGIXML_HAS_MOVE
-	PUGI_IMPL_FN xpath_query::xpath_query(xpath_query&& rhs) PUGIXML_NOEXCEPT
+	PUGI_IMPL_FN xpath_query::xpath_query(xpath_query&& rhs) noexcept
 	{
 		_impl = rhs._impl;
 		_result = rhs._result;
@@ -13259,7 +13259,7 @@ namespace pugi
 		rhs._result = xpath_parse_result();
 	}
 
-	PUGI_IMPL_FN xpath_query& xpath_query::operator=(xpath_query&& rhs) PUGIXML_NOEXCEPT
+	PUGI_IMPL_FN xpath_query& xpath_query::operator=(xpath_query&& rhs) noexcept
 	{
 		if (this == &rhs) return *this;
 

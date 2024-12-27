@@ -96,22 +96,11 @@
 #	endif
 #endif
 
-// If C++ is 2011 or higher, use 'noexcept' specifiers
-#ifndef PUGIXML_NOEXCEPT
-#	if __cplusplus >= 201103
-#		define PUGIXML_NOEXCEPT noexcept
-#	elif defined(_MSC_VER) && _MSC_VER >= 1900
-#		define PUGIXML_NOEXCEPT noexcept
-#	else
-#		define PUGIXML_NOEXCEPT throw()
-#	endif
-#endif
-
 // Some functions can not be noexcept in compact mode
 #ifdef PUGIXML_COMPACT
 #	define PUGIXML_NOEXCEPT_IF_NOT_COMPACT
 #else
-#	define PUGIXML_NOEXCEPT_IF_NOT_COMPACT PUGIXML_NOEXCEPT
+#	define PUGIXML_NOEXCEPT_IF_NOT_COMPACT noexcept
 #endif
 
 // If C++ is 2011 or higher, add 'override' qualifiers
@@ -1273,8 +1262,8 @@ namespace pugi
 
 	#ifdef PUGIXML_HAS_MOVE
 		// Move semantics support
-		xpath_variable_set(xpath_variable_set&& rhs) PUGIXML_NOEXCEPT;
-		xpath_variable_set& operator=(xpath_variable_set&& rhs) PUGIXML_NOEXCEPT;
+		xpath_variable_set(xpath_variable_set&& rhs) noexcept;
+		xpath_variable_set& operator=(xpath_variable_set&& rhs) noexcept;
 	#endif
 
 		// Add a new variable or get the existing one, if the types match
@@ -1317,8 +1306,8 @@ namespace pugi
 
 	#ifdef PUGIXML_HAS_MOVE
 		// Move semantics support
-		xpath_query(xpath_query&& rhs) PUGIXML_NOEXCEPT;
-		xpath_query& operator=(xpath_query&& rhs) PUGIXML_NOEXCEPT;
+		xpath_query(xpath_query&& rhs) noexcept;
+		xpath_query& operator=(xpath_query&& rhs) noexcept;
 	#endif
 
 		// Get query expression return type
@@ -1383,7 +1372,7 @@ namespace pugi
 		explicit xpath_exception(const xpath_parse_result& result);
 
 		// Get error message
-		virtual const char* what() const PUGIXML_NOEXCEPT PUGIXML_OVERRIDE;
+		virtual const char* what() const noexcept PUGIXML_OVERRIDE;
 
 		// Get parse result
 		const xpath_parse_result& result() const;
@@ -1467,8 +1456,8 @@ namespace pugi
 
 	#ifdef PUGIXML_HAS_MOVE
 		// Move semantics support
-		xpath_node_set(xpath_node_set&& rhs) PUGIXML_NOEXCEPT;
-		xpath_node_set& operator=(xpath_node_set&& rhs) PUGIXML_NOEXCEPT;
+		xpath_node_set(xpath_node_set&& rhs) noexcept;
+		xpath_node_set& operator=(xpath_node_set&& rhs) noexcept;
 	#endif
 
 		// Get collection type
@@ -1502,7 +1491,7 @@ namespace pugi
 		xpath_node* _end;
 
 		void _assign(const_iterator begin, const_iterator end, type_t type);
-		void _move(xpath_node_set& rhs) PUGIXML_NOEXCEPT;
+		void _move(xpath_node_set& rhs) noexcept;
 	};
 #endif
 
