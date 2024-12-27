@@ -223,7 +223,7 @@ PUGI_IMPL_NS_BEGIN
 	template <typename T> allocation_function xml_memory_management_function_storage<T>::allocate = default_allocate;
 	template <typename T> deallocation_function xml_memory_management_function_storage<T>::deallocate = default_deallocate;
 
-	typedef xml_memory_management_function_storage<int> xml_memory;
+	using xml_memory = xml_memory_management_function_storage<int>;
 PUGI_IMPL_NS_END
 
 // String utilities
@@ -299,7 +299,7 @@ PUGI_IMPL_NS_END
 PUGI_IMPL_NS_BEGIN
 	template <typename T> struct auto_deleter
 	{
-		typedef void (*D)(T*);
+		using D = void (*)(T *);
 
 		T* data;
 		D deleter;
@@ -1500,7 +1500,7 @@ PUGI_IMPL_NS_BEGIN
 
 	struct utf8_counter
 	{
-		typedef size_t value_type;
+		using value_type = size_t;
 
 		static value_type low(value_type result, uint32_t ch)
 		{
@@ -1521,7 +1521,7 @@ PUGI_IMPL_NS_BEGIN
 
 	struct utf8_writer
 	{
-		typedef uint8_t* value_type;
+		using value_type = uint8_t *;
 
 		static value_type low(value_type result, uint32_t ch)
 		{
@@ -1566,7 +1566,7 @@ PUGI_IMPL_NS_BEGIN
 
 	struct utf16_counter
 	{
-		typedef size_t value_type;
+		using value_type = size_t;
 
 		static value_type low(value_type result, uint32_t)
 		{
@@ -1581,7 +1581,7 @@ PUGI_IMPL_NS_BEGIN
 
 	struct utf16_writer
 	{
-		typedef uint16_t* value_type;
+		using value_type = uint16_t *;
 
 		static value_type low(value_type result, uint32_t ch)
 		{
@@ -1609,7 +1609,7 @@ PUGI_IMPL_NS_BEGIN
 
 	struct utf32_counter
 	{
-		typedef size_t value_type;
+		using value_type = size_t;
 
 		static value_type low(value_type result, uint32_t)
 		{
@@ -1624,7 +1624,7 @@ PUGI_IMPL_NS_BEGIN
 
 	struct utf32_writer
 	{
-		typedef uint32_t* value_type;
+		using value_type = uint32_t*;
 
 		static value_type low(value_type result, uint32_t ch)
 		{
@@ -1650,7 +1650,7 @@ PUGI_IMPL_NS_BEGIN
 
 	struct latin1_writer
 	{
-		typedef uint8_t* value_type;
+		using value_type = uint8_t*;
 
 		static value_type low(value_type result, uint32_t ch)
 		{
@@ -1671,7 +1671,7 @@ PUGI_IMPL_NS_BEGIN
 
 	struct utf8_decoder
 	{
-		typedef uint8_t type;
+		using type = uint8_t;
 
 		template <typename Traits> static inline typename Traits::value_type process(const uint8_t* data, size_t size, typename Traits::value_type result, Traits)
 		{
@@ -1738,7 +1738,7 @@ PUGI_IMPL_NS_BEGIN
 
 	template <typename opt_swap> struct utf16_decoder
 	{
-		typedef uint16_t type;
+		using type = uint16_t;
 
 		template <typename Traits> static inline typename Traits::value_type process(const uint16_t* data, size_t size, typename Traits::value_type result, Traits)
 		{
@@ -1790,7 +1790,7 @@ PUGI_IMPL_NS_BEGIN
 
 	template <typename opt_swap> struct utf32_decoder
 	{
-		typedef uint32_t type;
+		using type = uint32_t;
 
 		template <typename Traits> static inline typename Traits::value_type process(const uint32_t* data, size_t size, typename Traits::value_type result, Traits)
 		{
@@ -1820,7 +1820,7 @@ PUGI_IMPL_NS_BEGIN
 
 	struct latin1_decoder
 	{
-		typedef uint8_t type;
+		using type = uint8_t;
 
 		template <typename Traits> static inline typename Traits::value_type process(const uint8_t* data, size_t size, typename Traits::value_type result, Traits)
 		{
@@ -1839,26 +1839,26 @@ PUGI_IMPL_NS_BEGIN
 
 	template <> struct wchar_selector<2>
 	{
-		typedef uint16_t type;
-		typedef utf16_counter counter;
-		typedef utf16_writer writer;
-		typedef utf16_decoder<opt_false> decoder;
+		using type = uint16_t;
+		using counter = utf16_counter;
+		using writer = utf16_writer;
+		using decoder = utf16_decoder<opt_false>;
 	};
 
 	template <> struct wchar_selector<4>
 	{
-		typedef uint32_t type;
-		typedef utf32_counter counter;
-		typedef utf32_writer writer;
-		typedef utf32_decoder<opt_false> decoder;
+		using type = uint32_t;
+		using counter = utf32_counter;
+		using writer = utf32_writer;
+		using decoder = utf32_decoder<opt_false>;
 	};
 
-	typedef wchar_selector<sizeof(wchar_t)>::counter wchar_counter;
-	typedef wchar_selector<sizeof(wchar_t)>::writer wchar_writer;
+	using wchar_counter = wchar_selector<sizeof(wchar_t)>::counter;
+	using wchar_writer = wchar_selector<sizeof(wchar_t)>::writer;
 
 	struct wchar_decoder
 	{
-		typedef wchar_t type;
+		using type = wchar_t;
 
 		template <typename Traits> static inline typename Traits::value_type process(const wchar_t* data, size_t size, typename Traits::value_type result, Traits traits)
 		{
@@ -2707,7 +2707,7 @@ PUGI_IMPL_NS_BEGIN
 		}
 	}
 
-	typedef char_t* (*strconv_pcdata_t)(char_t*);
+	using strconv_pcdata_t = char_t*(*)(char_t*);
 
 	template <typename opt_trim, typename opt_eol, typename opt_escape> struct strconv_pcdata_impl
 	{
@@ -2778,7 +2778,7 @@ PUGI_IMPL_NS_BEGIN
 		}
 	}
 
-	typedef char_t* (*strconv_attribute_t)(char_t*, char_t);
+	using strconv_attribute_t = char_t*(*)(char_t*, char_t);
 
 	template <typename opt_escape> struct strconv_attribute_impl
 	{
