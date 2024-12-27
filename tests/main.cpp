@@ -1,10 +1,10 @@
 #include "test.hpp"
 #include "allocator.hpp"
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <float.h>
-#include <assert.h>
+#include <cstdio>
+#include <cstdlib>
+#include <cfloat>
+#include <cassert>
 
 #include <string>
 

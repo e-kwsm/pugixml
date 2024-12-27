@@ -5,10 +5,10 @@
 
 #include "writer_string.hpp"
 
-#include <math.h>
-#include <float.h>
-#include <string.h>
-#include <wchar.h>
+#include <cmath>
+#include <cfloat>
+#include <cstring>
+#include <cwchar>
 
 #include <algorithm>
 #include <vector>

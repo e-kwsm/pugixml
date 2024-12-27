@@ -2,8 +2,8 @@
 
 #include "test.hpp"
 
-#include <string.h>
-#include <wchar.h>
+#include <cstring>
+#include <cwchar>
 #include <string>
 
 using namespace pugi;

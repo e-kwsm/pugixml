@@ -3,14 +3,14 @@
 #define _SCL_SECURE_NO_DEPRECATE
 #define _CRT_NONSTDC_NO_DEPRECATE 0
 
-#include <string.h> // because Borland's STL is braindead, we have to include <string.h> _before_ <string> in order to get memcpy
+#include <cstring> // because Borland's STL is braindead, we have to include <cstring> _before_ <string> in order to get memcpy
 
 #include "test.hpp"
 
 #include "writer_string.hpp"
 
-#include <stdio.h>
-#include <stdlib.h>
+#include <cstdio>
+#include <cstdlib>
 
 #include <fstream>
 #include <sstream>

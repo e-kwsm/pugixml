@@ -2,7 +2,7 @@
 
 #include "helpers.hpp"
 
-#include <limits.h>
+#include <climits>
 
 using namespace pugi;
 

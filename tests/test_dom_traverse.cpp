@@ -4,9 +4,9 @@
 
 #include "test.hpp"
 
-#include <string.h>
-#include <stdio.h>
-#include <wchar.h>
+#include <cstring>
+#include <cstdio>
+#include <cwchar>
 
 #include <utility>
 #include <vector>

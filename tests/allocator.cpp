@@ -1,8 +1,8 @@
 #include "allocator.hpp"
 
-#include <string.h>
-#include <assert.h>
-#include <stdlib.h>
+#include <cstring>
+#include <cassert>
+#include <cstdlib>
 
 // Address sanitizer
 #if defined(__has_feature)

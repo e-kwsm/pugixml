@@ -3,9 +3,9 @@
 #include <limits>
 #include <string>
 
-#include <math.h>
-#include <string.h>
-#include <limits.h>
+#include <cmath>
+#include <cstring>
+#include <climits>
 
 using namespace pugi;
 

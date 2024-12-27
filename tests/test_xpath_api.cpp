@@ -1,6 +1,6 @@
 #ifndef PUGIXML_NO_XPATH
 
-#include <string.h> // because Borland's STL is braindead, we have to include <string.h> _before_ <string> in order to get memcmp
+#include <cstring> // because Borland's STL is braindead, we have to include <cstring> _before_ <string> in order to get memcmp
 
 #include "test.hpp"
 
