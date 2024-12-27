@@ -40,7 +40,7 @@
 
 // Check if std::string_view is available
 #if !defined(PUGIXML_HAS_STRING_VIEW) && !defined(PUGIXML_NO_STL)
-#	if __cplusplus >= 201703L
+#	if defined(__cpp_lib_string_view) || __cplusplus >= 201703L
 #		define PUGIXML_HAS_STRING_VIEW
 #	elif defined(_MSVC_LANG) && _MSVC_LANG >= 201703L
 #		define PUGIXML_HAS_STRING_VIEW
