@@ -188,12 +188,12 @@ using std::free;
 namespace pugi
 {
 #	ifndef _UINTPTR_T_DEFINED
-	typedef size_t uintptr_t;
+	using uintptr_t = size_t;
 #	endif
 
-	typedef unsigned __int8 uint8_t;
-	typedef unsigned __int16 uint16_t;
-	typedef unsigned __int32 uint32_t;
+	using __int8 = unsigned uint8_t;
+	using __int16 = unsigned uint16_t;
+	using __int32 = unsigned uint32_t;
 }
 #else
 #	include <stdint.h>
@@ -1862,7 +1862,7 @@ PUGI_IMPL_NS_BEGIN
 
 		template <typename Traits> static inline typename Traits::value_type process(const wchar_t* data, size_t size, typename Traits::value_type result, Traits traits)
 		{
-			typedef wchar_selector<sizeof(wchar_t)>::decoder decoder;
+			using decoder = wchar_selector<sizeof(wchar_t)>::decoder;
 
 			return decoder::process(reinterpret_cast<const typename decoder::type*>(data), size, result, traits);
 		}
@@ -8722,7 +8722,7 @@ PUGI_IMPL_NS_BEGIN
 	{
 	#if defined(__STDC_IEC_559__) || ((FLT_RADIX - 0 == 2) && (FLT_MAX_EXP - 0 == 128) && (FLT_MANT_DIG - 0 == 24))
 		PUGI_IMPL_STATIC_ASSERT(sizeof(float) == sizeof(uint32_t));
-		typedef uint32_t UI; // BCC5 workaround
+		using UI = uint32_t; // BCC5 workaround
 		union { float f; UI i; } u;
 		u.i = 0x7fc00000;
 		return double(u.f);
